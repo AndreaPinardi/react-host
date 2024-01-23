@@ -4,7 +4,7 @@ const Dotenv = require('dotenv-webpack');
 const deps = require("./package.json").dependencies;
 module.exports = (_, argv) => ({
   output: {
-    publicPath: argv.mode === "development" ? "http://localhost:8080" : "https://react-host-nine.vercel.app/",
+    publicPath: argv.mode === "development" ? "http://localhost:8080/" : "https://react-host-nine.vercel.app/",
   },
 
   resolve: {
@@ -41,12 +41,14 @@ module.exports = (_, argv) => ({
 
   plugins: [
     new ModuleFederationPlugin({
-      name: ".",
+      name: "host",
       filename: "remoteEntry.js",
       remotes: {
-        remote: "remote@https://remote-beige.vercel.app/_next/static/chunks/remoteEntry.js"
+        remote: argv.mode === "development" ? "remote@http://localhost/8081/_next/static/chunks/remoteEntry.js" : "remote@https://remote-beige.vercel.app/_next/static/chunks/remoteEntry.js"
       },
-      exposes: {},
+      exposes: {
+        
+      },
       shared: {
         ...deps,
         react: {
