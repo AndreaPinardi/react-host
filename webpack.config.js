@@ -5,13 +5,13 @@ const deps = require("./package.json").dependencies;
 const path = require('path');
 
 module.exports = (_, argv) => ({
-  entry: {
-    main: "./src/index.ts",
-    brain: "./src/brain.ts",
-  },
+  // entry: {
+  //   main: "./src/index.ts",
+  //   brain: "./src/brain.ts",
+  // },
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
+    // filename: '[name].js',
+    // path: path.resolve(__dirname, 'dist'),
     publicPath: argv.mode === "development" ? "http://localhost:8080/" : "https://react-host-nine.vercel.app/",
   },
 

@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom";
 import "./index.scss";
+import brain from "./brain";
 
 const RemoteComponent = lazy(() =>
   import("remote/nextjs-remote-page").catch(() => {
@@ -9,9 +10,9 @@ const RemoteComponent = lazy(() =>
 );
 
 const App = ({config = null}: any) => (
-  <div className="mt-10 text-3xl mx-auto max-w-6xl">
+  <div className="">
     <Suspense fallback={null}>
-      <RemoteComponent config={config}/>
+      <RemoteComponent config={config} rxcBrain={brain}/>
     </Suspense>
   </div>
 );

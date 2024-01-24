@@ -3,3 +3,5 @@ const brain = {
 }
 
 window.RXCBrain = {brain}
+
+export default brain
